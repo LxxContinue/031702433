@@ -49,6 +49,9 @@ def sortinfo(information):
         newaddr.append(addr)
     # 切分街道、镇、乡
     lastaddr = newaddr.pop()
+
+    address = newaddr
+
     thridcut_list = lastaddr.split('街道', 1)
     if len(thridcut_list) > 1:
         thridcut_list[0] += "街道"
@@ -60,10 +63,38 @@ def sortinfo(information):
             thridcut_list = lastaddr.split('乡', 1)
             if len(thridcut_list) > 1:
                 thridcut_list[0] += "乡"
-            else:
-                thridcut_list.insert(0, '')
+    if len(thridcut_list) > 1:
+        address = address + [thridcut_list[0]]
+        thridcut_addr = thridcut_list[1]
+    else :
+        thridcut_addr = thridcut_list[0]
 
-    address = newaddr + thridcut_list
+    forthcut_list = thridcut_addr.split('路', 1)
+    if len(forthcut_list) > 1:
+        forthcut_list[0] += "路"
+    else:
+        forthcut_list = thridcut_addr.split('街', 1)
+        if len(forthcut_list) > 1:
+            forthcut_list[0] += "街"
+        else:
+            forthcut_list = thridcut_addr.split('巷', 1)
+            if len(forthcut_list) > 1:
+                forthcut_list[0] += "巷"
+    if len(forthcut_list) > 1:
+        address = address + [forthcut_list[0]]
+        forthcut_addr = forthcut_list[1]
+    else :
+        forthcut_addr = forthcut_list[0]
+
+    fifthcut_list =forthcut_addr.split('号', 1)
+    if len(fifthcut_list) > 1:
+        fifthcut_list[0] += "号"
+        address = address + fifthcut_list
+    else:
+        address = address + fifthcut_list
+
+
+
     temp = {
             "姓名": name,
             "手机": phone,
