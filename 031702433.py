@@ -83,4 +83,5 @@ for one_data in new_data:
 '''
 
 origin_data = input()
-print(sortinfo(origin_data))
+str = origin_data.replace('.','')
+print(sortinfo(str))
