@@ -50,6 +50,11 @@ def sortinfo(information):
     # 切分街道、镇、乡
     lastaddr = newaddr.pop()
 
+    if newaddr[0] == '北京市' or'天津市'or'上海市'or '重庆市' :
+        str = newaddr[0].replace('市','')
+        newaddr[0] = str
+
+
     address = newaddr
 
     thridcut_list = lastaddr.split('街道', 1)
@@ -81,17 +86,17 @@ def sortinfo(information):
             if len(forthcut_list) > 1:
                 forthcut_list[0] += "巷"
     if len(forthcut_list) > 1:
-        address = address + [forthcut_list[0]]
+
         forthcut_addr = forthcut_list[1]
     else :
         forthcut_addr = forthcut_list[0]
 
     fifthcut_list =forthcut_addr.split('号', 1)
-    if len(fifthcut_list) > 1:
+    if len(fifthcut_list) > 1 and fifthcut_list[1] != '':
         fifthcut_list[0] += "号"
-        address = address + fifthcut_list
+        address = address + [forthcut_list[0]]+ fifthcut_list
     else:
-        address = address + fifthcut_list
+        address = address + [thridcut_addr]
 
 
 
