@@ -10,7 +10,8 @@ import json
 def sortname(information):
 
     origin_list = information.split(',', 1)
-    name = origin_list[0]
+    name_list = origin_list[0].split('!',1)
+    name = name_list[1]
     return name, origin_list[1]
 
 
@@ -68,37 +69,9 @@ def sortinfo(information):
             thridcut_list = lastaddr.split('乡', 1)
             if len(thridcut_list) > 1:
                 thridcut_list[0] += "乡"
-    if len(thridcut_list) > 1:
-        address = address + [thridcut_list[0]]
-        thridcut_addr = thridcut_list[1]
-    else :
-        thridcut_addr = thridcut_list[0]
-
-    forthcut_list = thridcut_addr.split('路', 1)
-    if len(forthcut_list) > 1:
-        forthcut_list[0] += "路"
-    else:
-        forthcut_list = thridcut_addr.split('街', 1)
-        if len(forthcut_list) > 1:
-            forthcut_list[0] += "街"
-        else:
-            forthcut_list = thridcut_addr.split('巷', 1)
-            if len(forthcut_list) > 1:
-                forthcut_list[0] += "巷"
-    if len(forthcut_list) > 1:
-
-        forthcut_addr = forthcut_list[1]
-    else :
-        forthcut_addr = forthcut_list[0]
-
-    fifthcut_list =forthcut_addr.split('号', 1)
-    if len(fifthcut_list) > 1 and fifthcut_list[1] != '':
-        fifthcut_list[0] += "号"
-        address = address + [forthcut_list[0]]+ fifthcut_list
-    else:
-        address = address + [thridcut_addr]
 
 
+    address = newaddr + thridcut_list
 
     temp = {
             "姓名": name,
