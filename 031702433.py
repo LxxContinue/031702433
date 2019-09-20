@@ -69,7 +69,8 @@ def sortinfo(information):
             thridcut_list = lastaddr.split('乡', 1)
             if len(thridcut_list) > 1:
                 thridcut_list[0] += "乡"
-
+            else:
+                thridcut_list.insert(0, '')
 
     address = newaddr + thridcut_list
 
