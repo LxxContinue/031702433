@@ -10,7 +10,7 @@ import json
 def sortname(information):
 
     origin_list = information.split(',', 1)
-    name_list = origin_list[0].split('!',1)
+    name_list = origin_list[0].split('!', 1)
     name = name_list[1]
     return name, origin_list[1]
 
